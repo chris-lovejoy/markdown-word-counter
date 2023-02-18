@@ -7,6 +7,7 @@ import datetime
 def count_words_in_directory(directory):
     word_count = 0
     for root, _, files in os.walk(directory):
+        # TODO: add option to not look in subfolders (based on config file)
         for file in files:
             if file.endswith('.md'):
                 filename = os.path.join(root, file)
@@ -29,5 +30,8 @@ def log_word_count(word_count):
         log_file.write(f'- {date_str}: {word_count} words\n')
 
 
-word_count = count_words_in_directory(config.WORD_COUNT_DIRECTORY)
-log_word_count(word_count)
+# Call the script
+
+if __name__ == '__main__':
+    word_count = count_words_in_directory(config.WORD_COUNT_DIRECTORY)
+    log_word_count(word_count)
