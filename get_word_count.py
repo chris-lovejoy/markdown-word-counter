@@ -30,18 +30,17 @@ def log_word_count(word_count):
        # Load the previous day's log
         log_file.seek(0)  # Move the file pointer to the beginning of the file
         previous_day_count = 0 # Initialise variable for count on the previous day 
-        previous_day_str = "- " + (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-        for line in log_file:
-            if line.startswith(previous_day_str):
-                previous_day_count = int(line.split()[2]) # Index into second element of the line
+        for line in reversed(list(log_file)):
+            if 'words' in line:
+                previous_day_count = int(line.split()[2])
                 break
 
         # Calculate the difference in the word count
         diff = word_count - previous_day_count
 
         # Write the log message
-        log_file.write(f'- {date_str}: {word_count} words ({diff:+} from {previous_day_count})\n')
-    
+        log_file.write(f'- {date_str}: {word_count} words ({diff:+} from prev recording of {previous_day_count})\n')
+
 
 # Call the script
 
