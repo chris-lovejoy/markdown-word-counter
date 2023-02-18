@@ -18,5 +18,5 @@ python get_word_count.py
 
 
 ## Potential future improvements:
-- [x] Counting the number of *new* words since last time function was called, rather than just the total number of words.
+- [x] ~~Counting the number of *new* words since last time function was called, rather than just the total number of words.~~
 - Incorporating the *changes* in words (rather than just the number). Sometimes I'll do editing of existing words, which is important but doesn't lead to *new* words being written
