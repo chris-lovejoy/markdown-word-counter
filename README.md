@@ -1,0 +1,1 @@
+# obsidian-word-counter
