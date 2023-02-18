@@ -26,9 +26,22 @@ def count_words(filename):
 def log_word_count(word_count):
     date_str = datetime.date.today().strftime("%Y-%m-%d")
     log_filename = config.LOG_FILE_PATH
-    with open(log_filename, 'a', encoding='utf-8') as log_file:
-        log_file.write(f'- {date_str}: {word_count} words\n')
+    with open(log_filename, 'a+', encoding='utf-8') as log_file:
+       # Load the previous day's log
+        log_file.seek(0)  # Move the file pointer to the beginning of the file
+        previous_day_count = 0 # Initialise variable for count on the previous day 
+        previous_day_str = "- " + (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+        for line in log_file:
+            if line.startswith(previous_day_str):
+                previous_day_count = int(line.split()[2]) # Index into second element of the line
+                break
 
+        # Calculate the difference in the word count
+        diff = word_count - previous_day_count
+
+        # Write the log message
+        log_file.write(f'- {date_str}: {word_count} words ({diff:+} from {previous_day_count})\n')
+    
 
 # Call the script
 
