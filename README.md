@@ -1,1 +1,1 @@
-# obsidian-word-counter
+# obsidian-word-counter (Work-In-Progress)
