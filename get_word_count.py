@@ -1,5 +1,5 @@
 import os
-
+import config
 
 # (1) Get the word count across all the files of interest
 
@@ -20,8 +20,7 @@ def count_words(filename):
         return len(words)
 
 
-directory = '/Users/chrislovejoy/Documents/My Drive/everything/10-19 Public Creation/13 Personal website/02-personal-website/_notes'
-word_count = count_words_in_directory(directory)
+word_count = count_words_in_directory(config.WORD_COUNT_DIRECTORY)
 
 
 # (2) Output the result into a log file, with the desired format
